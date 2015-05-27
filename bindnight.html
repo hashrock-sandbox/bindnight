@@ -1,0 +1,53 @@
+<head>
+  <title>bindnight</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="loginForm">
+  <form class="login__form">
+    ユーザ名：<input type="text" name="name">
+    <input type="submit" value="ログイン">
+  </form>
+</template>
+
+<template name="framework">
+  <li>{{name}}：{{score}}票　｜
+    {{#if voted}}
+      <a href="#" class="frameworks__devote">投票解除</a>
+    {{else}}
+      <a href="#" class="frameworks__vote">投票</a>
+    {{/if}}
+    <a href="#" class="frameworks__remove">x</a>
+  </li>
+</template>
+
+<template name="vote">
+  <li>{{framework}} by {{username}}
+    <a href="#" class="votes__remove">x</a>
+  </li>
+</template>
+<template name="hello">
+  {{#if username}}
+    <p>
+      {{username}}
+      <button class="main__logout">ログアウト</button>
+    </p>
+    
+    <h3>どのフレームワークが好きですか？</h3>
+    <form class="main__frameworks__form">
+      <input type="text" name="name">
+      <input type="submit" value="追加">
+    </form>
+    <ul>
+      {{#each frameworks}}
+        {{> framework}}
+      {{/each}}
+    </ul>
+    
+  {{else}}
+    {{> loginForm}}
+  {{/if}}  
+</template>
